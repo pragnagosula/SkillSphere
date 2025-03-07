@@ -1,0 +1,103 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px;
+}
+
+.navbar .back-btn {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+    position: relative; 
+}
+
+.navbar .back-btn::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px; 
+    width: 0%; 
+    height: 2px; 
+    background: red;
+    transition: width 0.3s ease-in-out; 
+}
+
+.navbar .back-btn:hover::after {
+    width: 100%; 
+}
+
+.room-container {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+video {
+    width: 50%;
+    border: 2px solid black;
+    margin: 10px;
+    display: none;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    video {
+        width: 90%;
+    }
+}
+
+#remoteVideos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+
+#remoteVideos video {
+    width: 45%;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    #remoteVideos video {
+        width: 100%;
+    }
+}
+
+.controls {
+    margin-top: 10px;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #e63f47;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #8b131d;
+}

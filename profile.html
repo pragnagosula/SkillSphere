@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Open Sans", sans-serif;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: url('https://gosalesandmarketing.com/wp-content/uploads/2015/10/Homepage-Profile-Background.png') no-repeat center center fixed;
+      background-size: cover;
+      background-color: #aba7a7;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); 
+      z-index: -1;
+    }
+    .container {
+      display: flex;
+      align-items: top;
+      gap: 30px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 30px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    .profile-pic {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding-top: 30px;
+      
+    }
+    .profile-pic img {
+      width: 150px;
+      height: 150px;
+      border-radius: 0%;
+      border: 3px solid white;
+      object-fit: cover;
+    }
+    .profile-pic input {
+      display: none;
+    }
+    .upload-btn {
+      background: #fff;
+      color: #000;
+      font-weight: 600;
+      border: none;
+      padding: 8px 15px;
+      cursor: pointer;
+      border-radius: 3px;
+      font-size: 14px;
+      border: 2px solid transparent;
+      transition: 0.3s ease;
+    }
+    .upload-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      color: white;
+      border: 2px solid white;
+    }
+    .wrapper {
+      width: 450px;
+      color: rgb(248, 247, 247);
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .input-field {
+  position: relative;
+  border-bottom: 2px solid #ccc;
+  margin: 15px 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field label {
+  position: absolute;
+  top: 0%;
+  left: 5px;
+  transform: translateY(-50%);
+  color: #f4f1f1;
+  font-size: 20px;
+  pointer-events: none;
+  transition: 0.3s ease all;
+}
+
+.input-field input {
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #fff;
+  padding: 1px 5px 0;
+}
+
+/* Ensure label moves up when input is focused or has a value */
+.input-field input:focus ~ label,
+.input-field input:not(:placeholder-shown) ~ label {
+  font-size: 0.8rem;
+  top: 5px;
+  transform: translateY(-100%);
+}
+    .btn {
+      background: #fff;
+      color: #000;
+      font-weight: 600;
+      border: none;
+      padding: 12px 20px;
+      cursor: pointer;
+      border-radius: 3px;
+      font-size: 16px;
+      border: 2px solid transparent;
+      transition: 0.3s ease;
+      width: 100%;
+      margin-top: 20px;
+    }
+    .btn:hover {
+      color: #fff;
+      border-color: #fff;
+      background: rgba(255, 255, 255, 0.15);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Profile Picture Section -->
+    <div class="profile-pic">
+      <img id="profileImage" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Profile Picture">
+      <input type="file" id="imageUpload" accept="image/*">
+      <button class="upload-btn" onclick="document.getElementById('imageUpload').click();">Add Image</button>
+    </div>
+
+    <!-- Form Section -->
+    <div class="wrapper">
+      <h2>User Profile</h2>
+      <div class="input-field">
+        <input type="text" required>
+        <label>Full Name</label>
+      </div>
+      <div class="input-field">
+        <input type="email" required>
+        <label>Email</label>
+      </div>
+      <div class="input-field">
+        <input type="text" required>
+        <label>Roll No</label>
+      </div>
+      <div class="input-field">
+        <input type="number" required>
+        <label>Number of Groups</label>
+      </div>
+      <div class="input-field">
+        <input type="text" required>
+        <label>Skills</label>
+      </div>
+      <div class="input-field">
+        <input type="text" required>
+        <label>GitHub</label>
+      </div>
+      <div class="input-field">
+        <input type="number" required>
+        <label>Projects Done</label>
+      </div>
+      <button class="btn">Save Changes</button>
+    </div>
+  </div>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+    let user = JSON.parse(localStorage.getItem("currentUser"));
+
+    if (user) {
+        document.querySelector(".input-field input[type='text']").value = user.rollNo || "";
+        document.querySelector(".input-field input[type='email']").value = user.email || "";
+
+        // Load profile image if already stored
+        if (user.profileImage) {
+            document.getElementById("profileImage").src = user.profileImage;
+        }
+    } else {
+        alert("No user logged in! Redirecting to login page.");
+        window.location.href = "login.html";
+    }
+});
+
+// Profile Image Upload & Save to LocalStorage
+document.getElementById("imageUpload").addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById("profileImage").src = e.target.result;
+
+            // Save the image to localStorage
+            let user = JSON.parse(localStorage.getItem("currentUser")) || {};
+            user.profileImage = e.target.result;
+            localStorage.setItem("currentUser", JSON.stringify(user));
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+  </script>
+</body>
+</html>

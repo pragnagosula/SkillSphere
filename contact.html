@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+        body {
+            background: url('https://gosalesandmarketing.com/wp-content/uploads/2015/10/Homepage-Profile-Background.png') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(60, 59, 59, 0.6);
+            z-index: -1;
+        }
+        /* Navbar */
+.navbar {
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.navbar .logo h2 {
+    margin: 0;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links li {
+    display: inline;
+    margin: 0 15px;
+}
+
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    position: relative;
+}
+.nav-links li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    background: red;
+    transition: width 0.3s ease-in-out;}
+.nav-links li a:hover::after {
+        width: 100%; /* Expands the underline on hover */
+    }
+        .contact-section {
+            padding: 50px 0;
+            color: rgb(251, 248, 248);
+        }
+        .contact-section h2 {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .contact-info i {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #cf4042;
+        }
+        .contact-form {
+            background: rgba(214, 216, 215, 0.847);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(250, 249, 249, 0.2);
+        }
+        .btn-custom {
+            background-color: #c71d3a;
+            color: white;
+            border: none;
+            transition: 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #932525;
+        }
+    </style>
+</head>
+<body>
+       <!-- Navbar -->
+       <nav class="navbar">
+        <div class="logo">
+            <h2 style="color: white;">SkillSphere</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="profile.html">PROFILE</a></li>
+            <li><a href="joinedgroup.html">GROUPS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </nav>
+
+<section class="contact-section text-center">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <p>Have any questions or inquiries? Feel free to reach out for more information. We're happy to assist you!</p>
+        
+        <div class="row mt-5">
+            <!-- Left Side - Contact Info -->
+            <div class="col-md-5 text-start">
+                <div class="contact-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Address</strong>
+                        <p>CBIT,Gandipet Village,Kokapet Mandal,Rangareddy district,Hyderabad.</p>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <strong>Phone</strong>
+                        <p>+91 8919955286</p>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong>
+                        <p>pragnagosula@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side - Contact Form -->
+            <div class="col-md-6 offset-md-1">
+                <div class="contact-form">
+                    <h4 class="mb-3">Send Message</h4>
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Full Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="3" placeholder="Type your Message..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-custom w-100">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

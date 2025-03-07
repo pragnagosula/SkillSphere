@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silent Room</title>
+    <link rel="stylesheet" href="silentroom.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="back-btn">Back to Home</a>
+    </nav>
+    
+    <!-- Silent Room Section -->
+    <section class="silent-room">
+        <h2>Silent Study Room</h2>
+        <button id="joinRoom">Join Room</button>
+    </section>
+
+    <script>
+        // Redirect to room.html when the "Join Room" button is clicked
+        document.getElementById("joinRoom").addEventListener("click", () => {
+            window.location.href = "room.html";
+        });
+    </script>
+</body>
+</html>

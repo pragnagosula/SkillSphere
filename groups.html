@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSphere - Groups</title>
+    <link rel="stylesheet" href="group.css"> <!-- Link to external CSS -->
+    <style>
+        .group:hover {
+            background-color: #f8f9fa;
+            transition: 0.3s;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(1.10);
+        }
+    </style>
+    
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <h2 style="color: white;">SkillSphere</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="profile.html">PROFILE</a></li>
+            <li><a href="joinedgroup.html">GROUPS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Groups Section -->
+    <section class="groups">
+        <h1>Explore Skill-Based Groups</h1>
+        <p>Find a group that matches your interests and start learning together!</p>
+        
+        <div class="group-list">
+            <div class="group">
+                <h2>Programming</h2>
+                <p>Join this group to improve your coding skills, solve challenges, and collaborate on projects.</p>
+                <button class="btn" onclick="joinGroup('Programming', 'Improve coding skills and collaborate on projects.', 'programming.html')">Join</button>
+            </div>
+
+            <div class="group">
+                <h2>Data Science</h2>
+                <p>Explore data analytics, visualization, and machine learning in this group.</p>
+                <button class="btn" onclick="joinGroup('Data Science', 'Explore analytics, visualization, and ML.', 'datascience.html')">Join</button>
+            </div>
+
+            <div class="group">
+                <h2>Artificial Intelligence & Machine Learning</h2>
+                <p>Learn AI and ML concepts, work on models, and stay updated with the latest research.</p>
+                <button class="btn" onclick="joinGroup('Artificial Intelligence & Machine Learning', 'Learn AI and ML concepts, work on models, and stay updated.', 'aiml.html')">Join</button>
+
+            </div>
+
+            <div class="group">
+                <h2>Web Development</h2>
+                <p>Master HTML, CSS, JavaScript, and modern web frameworks in this group.</p>
+                <button class="btn" onclick="joinGroup('Web Development', 'Master HTML, CSS, JS, and frameworks.', 'webdev.html')">Join</button>
+            </div>
+
+            <div class="group">
+                <h2>Cybersecurity</h2>
+                <p>Learn about ethical hacking, network security, and online privacy best practices.</p>
+                <button class="btn" onclick="joinGroup('Cybersecurity', 'Learn ethical hacking, network security, and online privacy.', 'cybersecurity.html')">Join</button>
+
+            </div>
+
+            <div class="group">
+                <h2>Competitive Programming</h2>
+                <p>Enhance problem-solving skills by participating in contests and coding challenges.</p>
+                <button class="btn" onclick="joinGroup('Competitive Programming', 'Enhance problem-solving skills and participate in coding contests.', 'competitiveprogramming.html')">Join</button>
+
+            </div>
+        </div>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    let currentUser = localStorage.getItem("currentUser");
+
+    if (!currentUser) {
+        alert("Please log in first!");
+        window.location.href = "login.html"; // Redirect to Login Page
+    }
+});
+function joinGroup(groupName, description, pageLink) {
+    let currentUser = localStorage.getItem("currentUser");
+    
+    if (!currentUser) {
+        alert("Please log in first!");
+        window.location.href = "login.html";
+        return;
+    }
+
+    // Get user-specific joined groups
+    let allJoinedGroups = JSON.parse(localStorage.getItem("allJoinedGroups")) || {};
+    
+    if (!allJoinedGroups[currentUser]) {
+        allJoinedGroups[currentUser] = [];
+    }
+
+    // Check if user already joined the group
+    let exists = allJoinedGroups[currentUser].some(group => group.name === groupName);
+    
+    if (!exists) {
+        allJoinedGroups[currentUser].push({ name: groupName, description: description, link: pageLink });
+        localStorage.setItem("allJoinedGroups", JSON.stringify(allJoinedGroups));
+    }
+
+    alert(`You have joined the ${groupName} group!`);
+    window.location.href = "joinedgroup.html";
+}
+
+    </script>
+    
+    
+    
+    
+
+</body>
+</html>

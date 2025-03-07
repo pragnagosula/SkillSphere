@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Room</title>
+    <link rel="stylesheet" href="silentroom.css"> <!-- Use the same CSS file -->
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="back-btn">Back to Home</a>
+    </nav>
+
+    <!-- Room Interface -->
+    <section class="silent-room">
+        <h2>Study Room</h2>
+        <div>
+            <video id="localVideo" autoplay muted></video>
+            <div class="controls">
+                <button id="toggleVideo">Turn Video Off</button>
+                <button id="toggleAudio">Mute Audio</button>
+                <button id="leaveRoom">Leave Room</button>
+            </div>
+            <div id="remoteVideos"></div>
+        </div>
+    </section>
+
+    <script src="silentroom.js"></script>
+</body>
+</html>

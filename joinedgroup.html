@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joined Groups</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 0px;
+        }
+        /* Navbar */
+.navbar {
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    margin-top: 0%;
+}
+
+.navbar .logo h2 {
+    margin: 0;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links li {
+    display: inline;
+    margin: 0 15px;
+}
+
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    position: relative;
+}
+.nav-links li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    background: red;
+    transition: width 0.3s ease-in-out;}
+.nav-links li a:hover::after {
+        width: 100%; /* Expands the underline on hover */
+    }
+        .group-list {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .group-item {
+            background: white;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        .group-item h2 {
+            margin: 0;
+            color: #333;
+        }
+        .group-item p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #f03b3b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #871119;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <h2 style="color: white;">SkillSphere</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="profile.html">PROFILE</a></li>
+            <li><a href="joinedgroup.html">GROUPS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </nav>
+    <h1>Your Joined Groups</h1>
+    <div class="group-list" id="joinedGroups"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentUser = localStorage.getItem("currentUser");
+
+            if (!currentUser) {
+                alert("Please log in first!");
+                window.location.href = "login.html";
+                return;
+            }
+
+            let allJoinedGroups = JSON.parse(localStorage.getItem("allJoinedGroups")) || {};
+            let joinedGroups = allJoinedGroups[currentUser] || [];
+            let groupListDiv = document.getElementById("joinedGroups");
+
+            if (joinedGroups.length > 0) {
+                joinedGroups.forEach(group => {
+                    let groupDiv = document.createElement("div");
+                    groupDiv.classList.add("group-item");
+
+                    groupDiv.innerHTML = `
+                        <h2>${group.name}</h2>
+                        <p>${group.description}</p>
+                        <a href="${group.link}" class="btn">Go to Group</a>
+                    `;
+
+                    groupListDiv.appendChild(groupDiv);
+                });
+            } else {
+                groupListDiv.innerHTML = "<p>You haven't joined any groups yet.</p>";
+            }
+        });
+    </script>
+</body>
+</html>
